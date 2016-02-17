@@ -61,6 +61,8 @@ For compatibility with RxJS Observables, as well as other Promise or Observable 
 
 If you are using the `safeApply` operator from https://github.com/Reactive-Extensions/rx.angular.js for example, then `this` is not needed.
 
+Live example: http://jsbin.com/qoxaqo/edit?html,js,output
+
 ## License
 
 MIT
