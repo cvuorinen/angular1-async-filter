@@ -1,0 +1,26 @@
+{
+  "name": "angular1-async-filter",
+  "description": "Angular2 async pipe implemented as Angular 1 filter to handle promises & RxJS observables",
+  "main": "async-filter.js",
+  "authors": [
+    "Carl Vuorinen"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "async",
+    "filter",
+    "promise",
+    "observable",
+    "rxjs"
+  ],
+  "homepage": "https://github.com/cvuorinen/angular1-async-filter",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
