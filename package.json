@@ -1,0 +1,32 @@
+{
+  "name": "angular1-async-filter",
+  "version": "1.0.0",
+  "description": "Angular2 async pipe implemented as Angular 1 filter to handle promises & RxJS observables",
+  "main": "async-filter.js",
+  "scripts": {
+    "build": "babel src/async-filter.js -o async-filter.js --presets 'es2015'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cvuorinen/angular1-async-filter.git"
+  },
+  "keywords": [
+    "angular",
+    "async",
+    "filter",
+    "promise",
+    "observable",
+    "rxjs"
+  ],
+  "author": "Carl Vuorinen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cvuorinen/angular1-async-filter/issues"
+  },
+  "homepage": "https://github.com/cvuorinen/angular1-async-filter#readme",
+  "devDependencies": {
+    "babel-cli": "^6.5.1",
+    "babel-preset-es2015": "^6.5.0"
+  }
+}
