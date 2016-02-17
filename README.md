@@ -1,6 +1,6 @@
 # Angular1 async filter
 
-Angular2 async pipe implemented as Angular 1 filter to handle Promises & RxJS Observables
+> Angular2 async pipe implemented as Angular 1 filter to handle Promises & RxJS Observables
 
 The async filter takes a Promise or Observable as input and subscribes to the input automatically, eventually returning the emitted value(s) similarly as with Angular2 Async pipe.
 Works with RxJS Observables even without https://github.com/Reactive-Extensions/rx.angular.js
