@@ -27,10 +27,10 @@
                 if (scope && scope.$on) {
                     // Clean up subscription and its last value when the scope is destroyed.
                     scope.$on('$destroy', function () {
-                        if (subscriptions[inputId]) {
+                        if (subscriptions[inputId] && subscriptions[inputId].dispose) {
                             subscriptions[inputId].dispose();
-                            delete subscriptions[inputId];
                         }
+                        delete subscriptions[inputId];
                         delete values[inputId];
                     });
                 }
