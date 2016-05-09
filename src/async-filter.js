@@ -22,6 +22,17 @@
                         scope.$applyAsync(); // Automatic safe apply, if scope provided
                     }
                 });
+
+                if (scope && scope.$on) {
+                    // Clean up subscription and its last value when the scope is destroyed.
+                    scope.$on('$destroy', () => {
+                        if (subscriptions[inputId] && subscriptions[inputId].dispose) {
+                            subscriptions[inputId].dispose();
+                        }
+                        delete subscriptions[inputId];
+                        delete values[inputId];
+                    });
+                }
             }
 
             return values[inputId] || undefined;
