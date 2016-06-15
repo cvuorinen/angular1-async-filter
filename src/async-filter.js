@@ -35,7 +35,7 @@
                 }
             }
 
-            return values[inputId] || undefined;
+            return values[inputId];
         };
 
         // Need a way to tell the input objects apart from each other (so we only subscribe to them once)
