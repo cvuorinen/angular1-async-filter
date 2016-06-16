@@ -1,11 +1,11 @@
 {
   "name": "angular1-async-filter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Angular2 async pipe implemented as Angular 1 filter to handle promises & RxJS observables",
   "main": "async-filter.js",
   "scripts": {
     "build": "babel src/async-filter.js -o async-filter.js --presets 'es2015'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/karma/bin/karma start --single-run"
   },
   "repository": {
     "type": "git",
