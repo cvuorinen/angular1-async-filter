@@ -14,7 +14,7 @@
             var inputId = objectId(input);
             if (!(inputId in subscriptions)) {
                 var subscriptionStrategy = input.subscribe && input.subscribe.bind(input) || input.success && input.success.bind(input) // To make it work with HttpPromise
-                 || input.then.bind(input);
+                || input.then.bind(input);
 
                 subscriptions[inputId] = subscriptionStrategy(function (value) {
                     values[inputId] = value;
@@ -27,8 +27,10 @@
                 if (scope && scope.$on) {
                     // Clean up subscription and its last value when the scope is destroyed.
                     scope.$on('$destroy', function () {
-                        if (subscriptions[inputId] && subscriptions[inputId].dispose) {
-                            subscriptions[inputId].dispose();
+                        var sub = subscriptions[inputId];
+                        if (sub) {
+                            sub.unsubscribe && sub.unsubscribe();
+                            sub.dispose && sub.dispose();
                         }
                         delete subscriptions[inputId];
                         delete values[inputId];
