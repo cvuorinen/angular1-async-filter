@@ -1,6 +1,6 @@
 {
   "name": "angular1-async-filter",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Angular2 async pipe implemented as Angular 1 filter to handle promises & RxJS observables",
   "main": "async-filter.js",
   "scripts": {
