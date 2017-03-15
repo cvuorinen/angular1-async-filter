@@ -14,7 +14,7 @@
             var inputId = objectId(input);
             if (!(inputId in subscriptions)) {
                 var subscriptionStrategy = input.subscribe && input.subscribe.bind(input) || input.success && input.success.bind(input) // To make it work with HttpPromise
-                || input.then.bind(input);
+                 || input.then.bind(input);
 
                 subscriptions[inputId] = subscriptionStrategy(function (value) {
                     values[inputId] = value;

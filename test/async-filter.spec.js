@@ -13,12 +13,22 @@ describe('Filter: async', function () {
                 resolve: function (value) { callback(value); }
             };
         },
-        observableMock = function() {
+        observableMock = function(subscription) {
             var callback;
             return {
-                subscribe: function(callbackFn) { callback = callbackFn; },
+                subscribe: function(callbackFn) {
+                    callback = callbackFn;
+
+                    return subscription;
+                },
                 next: function (value) { callback(value); }
             };
+        },
+        subscriptionMock = function(unsubscribeFunctionName) {
+            var subscription = {};
+            subscription[unsubscribeFunctionName] = function() {};
+
+            return subscription;
         };
 
     beforeEach(module('asyncFilter'));
@@ -119,5 +129,43 @@ describe('Filter: async', function () {
         asyncFilter(observable, scope);
 
         expect(scope.$on).toHaveBeenCalledWith('$destroy', jasmine.any(Function));
+    });
+
+    it('should dispose subscription on scope $destroy event', function() {
+        // RxJS 4 style unsubscribe
+        var subscription = subscriptionMock('dispose');
+        spyOn(subscription, 'dispose');
+        var observable = observableMock(subscription);
+        var onDestroy;
+        var scope = {
+            $on: function(event, callback) { onDestroy = callback; }
+        };
+
+        asyncFilter(observable, scope);
+
+        expect(subscription.dispose).not.toHaveBeenCalled();
+
+        onDestroy();
+
+        expect(subscription.dispose).toHaveBeenCalled();
+    });
+
+    it('should unsubscribe subscription on scope $destroy event', function() {
+        // RxJS 5 support
+        var subscription = subscriptionMock('unsubscribe');
+        spyOn(subscription, 'unsubscribe');
+        var observable = observableMock(subscription);
+        var onDestroy;
+        var scope = {
+            $on: function(event, callback) { onDestroy = callback; }
+        };
+
+        asyncFilter(observable, scope);
+
+        expect(subscription.unsubscribe).not.toHaveBeenCalled();
+
+        onDestroy();
+
+        expect(subscription.unsubscribe).toHaveBeenCalled();
     });
 });
